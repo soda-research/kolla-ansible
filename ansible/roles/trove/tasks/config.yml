@@ -88,6 +88,19 @@
   notify:
     - "Restart {{ item.key }} container"
 
+- name: Copying over trove guest conf
+  vars:
+    service: "{{ trove_services['trove-taskmanager'] }}"
+  template:
+    src: "{{ role_path }}/templates/trove-guestagent.conf.j2"
+    dest: "{{ node_config_directory }}/trove-taskmanager/trove-guestagent.conf"
+  register: trove_guest_conf
+  when:
+    - inventory_hostname in groups[service.group]
+    - service.enabled | bool
+  notify:
+    - Restart trove-taskmanager container
+
 - name: Copying over existing policy file
   template:
     src: "{{ trove_policy_file_path }}"
