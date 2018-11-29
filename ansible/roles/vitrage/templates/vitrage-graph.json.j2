@@ -6,6 +6,12 @@
             "dest": "/etc/vitrage/vitrage.conf",
             "owner": "vitrage",
             "perm": "0644"
+        },
+        {
+            "source": "{{ container_config_directory }}/datasources_values",
+            "dest": "/etc/vitrage/datasources_values",
+            "owner": "vitrage",
+            "perm": "0700"
         }{% if vitrage_policy_file is defined %},
         {
             "source": "{{ container_config_directory }}/{{ vitrage_policy_file }}",
