@@ -12,6 +12,7 @@ mistral_services:
       - "/etc/localtime:/etc/localtime:ro"
       - "kolla_logs:/var/log/kolla/"
       - "{{ kolla_dev_repos_directory ~ '/mistral/mistral:/var/lib/kolla/venv/lib/python2.7/site-packages/mistral' if mistral_dev_mode | bool else '' }}"
+      - "{{ kolla_dev_repos_directory ~ '/python-troveclient/troveclient:/var/lib/kolla/venv/lib/python2.7/site-packages/troveclient' if mistral_dev_mode | bool else '' }}"
     dimensions: "{{ mistral_api_dimensions }}"
     haproxy:
       mistral_api:
@@ -34,6 +35,7 @@ mistral_services:
       - "/etc/localtime:/etc/localtime:ro"
       - "kolla_logs:/var/log/kolla/"
       - "{{ kolla_dev_repos_directory ~ '/mistral/mistral:/var/lib/kolla/venv/lib/python2.7/site-packages/mistral' if mistral_dev_mode | bool else '' }}"
+      - "{{ kolla_dev_repos_directory ~ '/python-troveclient/troveclient:/var/lib/kolla/venv/lib/python2.7/site-packages/troveclient' if mistral_dev_mode | bool else '' }}"
     dimensions: "{{ mistral_engine_dimensions }}"
   mistral-executor:
     container_name: mistral_executor
@@ -45,6 +47,7 @@ mistral_services:
       - "/etc/localtime:/etc/localtime:ro"
       - "kolla_logs:/var/log/kolla/"
       - "{{ kolla_dev_repos_directory ~ '/mistral/mistral:/var/lib/kolla/venv/lib/python2.7/site-packages/mistral' if mistral_dev_mode | bool else '' }}"
+      - "{{ kolla_dev_repos_directory ~ '/python-troveclient/troveclient:/var/lib/kolla/venv/lib/python2.7/site-packages/troveclient' if mistral_dev_mode | bool else '' }}"
     dimensions: "{{ mistral_executor_dimensions }}"
 
 

@@ -5,3 +5,10 @@
     dest: "{{ kolla_dev_repos_directory }}/{{ project_name }}"
     update: "{{ mistral_dev_repos_pull }}"
     version: "{{ mistral_source_version }}"
+
+- name: Cloning troveclient source repository for development
+  git:
+    repo: "{{ kolla_dev_repos_git }}/python-troveclient"
+    dest: "{{ kolla_dev_repos_directory }}/python-troveclient"
+    update: "{{ mistral_dev_repos_pull }}"
+    version: "{{ mistral_source_version }}"
