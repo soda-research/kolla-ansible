@@ -5,8 +5,8 @@
     status_code: 200
   register: result
   until: result.get('status') == 200
-  retries: 10
-  delay: 2
+  retries: 20
+  delay: 5
   run_once: true
 
 - name: Define Monasca Grafana control plane organisation name
