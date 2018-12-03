@@ -33,6 +33,7 @@
     body:
       name: '{{ monasca_grafana_control_plane_org }}'
     force_basic_auth: true
+  run_once: True
   when: monasca_grafana_control_plane_org not in monasca_grafana_orgs.json|map(attribute='name')|unique
 
 - name: Lookup Monasca Grafana control plane organisation ID
